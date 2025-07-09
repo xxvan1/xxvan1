@@ -1,4 +1,12 @@
-## Hi there 👋
+## Hi there, I'm Mark Ivan but you may call me as Van.
+🧠 IT Student | Designer | Dev in Progress
+⚡ Tools: Figma | Photoshop | Illustrator | Jetbrains IDE |  Unity Engine
+🌱 I’m currently learning Full Stack
+⚡ Fun fact: When I start learning on something, I'm bad at it. It takes atleast 2-3 tries before I understand the logic and master it.
+
+
+I like webdesigning, using tools like figma brings me joy as I design a random mockup.
+I am currently tackling front-end and back-end as my study requires it.
 
 <!--
 **xxvan1/xxvan1** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
