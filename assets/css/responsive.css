@@ -1,0 +1,772 @@
+/**
+ * Responsive Framework - Mobile-First Design
+ * Touch-friendly interactions and WCAG 2.1 compliant
+ * Optimized for all devices with performance focus
+ */
+
+/* ============================================
+   RESET & NORMALIZE - FOUNDATION
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    line-height: 1.4;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   BREAKPOINT CLASSES - RESPONSIVE STATES
+   ============================================ */
+
+.breakpoint-mobile {
+    --breakpoint: 'mobile';
+}
+
+.breakpoint-tablet {
+    --breakpoint: 'tablet';
+}
+
+.breakpoint-desktop {
+    --breakpoint: 'desktop';
+}
+
+.breakpoint-large {
+    --breakpoint: 'large';
+}
+
+/* ============================================
+   ORIENTATION CLASSES - DEVICE ROTATION
+   ============================================ */
+
+.orientation-portrait {
+    --orientation: 'portrait';
+}
+
+.orientation-landscape {
+    --orientation: 'landscape';
+}
+
+/* ============================================
+   TOUCH DEVICE SUPPORT - INTERACTION OPTIMIZATION
+   ============================================ */
+
+.touch-device {
+    --touch-enabled: true;
+}
+
+.no-touch {
+    --touch-enabled: false;
+}
+
+.touch-device * {
+    cursor: pointer;
+}
+
+.no-touch *:hover {
+    cursor: default;
+}
+
+/* ============================================
+   CONTAINER SYSTEM - RESPONSIVE LAYOUT
+   ============================================ */
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   GRID SYSTEM - FLEXBOX BASED
+   ============================================ */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    flex: 1;
+    padding: 0 15px;
+    min-width: 0;
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0 15px;
+}
+
+/* ============================================
+   TYPOGRAPHY - RESPONSIVE TEXT
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+h1 {
+    font-size: 1.75rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.875rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   BUTTONS - TOUCH OPTIMIZED
+   ============================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    min-height: 44px;
+    min-width: 44px;
+    box-sizing: border-box;
+}
+
+.btn:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: #fff;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+    border-color: #545b62;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+/* ============================================
+   FORM ELEMENTS - ACCESSIBLE INPUTS
+   ============================================ */
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-height: 44px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* ============================================
+   UTILITIES - HELPER CLASSES
+   ============================================ */
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.pt-1 {
+    padding-top: 0.25rem;
+}
+
+.pb-1 {
+    padding-bottom: 0.25rem;
+}
+
+/* ============================================
+   VISIBILITY - RESPONSIVE DISPLAY
+   ============================================ */
+
+.visible-mobile {
+    display: block;
+}
+
+.visible-tablet,
+.visible-desktop,
+.visible-large {
+    display: none;
+}
+
+.hidden-mobile {
+    display: none;
+}
+
+.hidden-tablet,
+.hidden-desktop,
+.hidden-large {
+    display: block;
+}
+
+/* ============================================
+   ACCESSIBILITY - WCAG 2.1 COMPLIANCE
+   ============================================ */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Skip to main content */
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    z-index: 1000;
+    color: #fff;
+    background: #007bff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: top 0.2s ease;
+}
+
+.skip-to-main:focus {
+    top: 6px;
+}
+
+/* ============================================
+   FOCUS MANAGEMENT - KEYBOARD NAVIGATION
+   ============================================ */
+
+.focused {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   TOUCH TARGETS - MINIMUM SIZE ENFORCEMENT
+   ============================================ */
+
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS - MOBILE FIRST
+   ============================================ */
+
+/* Mobile - 320px+ */
+@media (min-width: 320px) {
+    .container {
+        max-width: 320px;
+        padding: 0 10px;
+    }
+    
+    .btn {
+        min-height: 48px;
+        font-size: 16px;
+    }
+    
+    .form-control {
+        min-height: 48px;
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.125rem;
+    }
+}
+
+/* Tablet - 768px+ */
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding: 0 20px;
+    }
+    
+    .btn {
+        min-height: 44px;
+        font-size: 15px;
+    }
+    
+    .form-control {
+        min-height: 44px;
+        font-size: 15px;
+    }
+    
+    .visible-tablet {
+        display: block;
+    }
+    
+    .hidden-tablet {
+        display: none;
+    }
+    
+    .visible-mobile {
+        display: none;
+    }
+    
+    .hidden-mobile {
+        display: block;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Desktop - 1024px+ */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+        padding: 0 30px;
+    }
+    
+    .btn {
+        min-height: 40px;
+        font-size: 14px;
+    }
+    
+    .form-control {
+        min-height: 40px;
+        font-size: 14px;
+    }
+    
+    .visible-desktop {
+        display: block;
+    }
+    
+    .hidden-desktop {
+        display: none;
+    }
+    
+    .visible-tablet {
+        display: none;
+    }
+    
+    .hidden-tablet {
+        display: block;
+    }
+    
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Large Desktop - 1440px+ */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+        padding: 0 40px;
+    }
+    
+    .visible-large {
+        display: block;
+    }
+    
+    .hidden-large {
+        display: none;
+    }
+    
+    .visible-desktop {
+        display: none;
+    }
+    
+    .hidden-desktop {
+        display: block;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h2 {
+        font-size: 2.25rem;
+    }
+    
+    h3 {
+        font-size: 1.875rem;
+    }
+}
+
+/* ============================================
+   ORIENTATION ADJUSTMENTS - LANDSCAPE MOBILE
+   ============================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .btn {
+        min-height: 40px;
+        font-size: 14px;
+    }
+    
+    .form-control {
+        min-height: 40px;
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.25rem;
+    }
+    
+    h2 {
+        font-size: 1.125rem;
+    }
+    
+    h3 {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+
+.touch-device .btn {
+    min-height: 48px;
+    font-size: 16px;
+}
+
+.touch-device .form-control {
+    min-height: 48px;
+    font-size: 16px;
+}
+
+.touch-device .btn:active {
+    transform: scale(0.98);
+}
+
+.no-touch .btn:hover {
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS - RETINA SUPPORT
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    .btn {
+        border-width: 0.5px;
+    }
+    
+    .form-control {
+        border-width: 0.5px;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT - PREFERS COLOR SCHEME
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a202c;
+        color: #e2e8f0;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #e2e8f0;
+    }
+    
+    .form-control {
+        background-color: #2d3748;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+    
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+    
+    .form-label {
+        color: #e2e8f0;
+    }
+    
+    .btn-outline {
+        color: #90cdf4;
+        border-color: #90cdf4;
+    }
+    
+    .btn-outline:hover {
+        background: #90cdf4;
+        color: #1a202c;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION - ACCESSIBILITY PREFERENCE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .btn:hover {
+        transform: none;
+    }
+    
+    .btn:active {
+        transform: none;
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE - ACCESSIBILITY SUPPORT
+   ============================================ */
+
+@media (prefers-contrast: high) {
+    .btn {
+        border-width: 2px;
+    }
+    
+    .form-control {
+        border-width: 2px;
+    }
+    
+    .btn:focus {
+        outline-width: 3px;
+    }
+    
+    .form-control:focus {
+        outline-width: 3px;
+    }
+}
+
+/* ============================================
+   PRINT STYLES - OPTIMIZED FOR PRINTING
+   ============================================ */
+
+@media print {
+    .btn {
+        display: none;
+    }
+    
+    .form-control {
+        border: 1px solid #000;
+        background: transparent;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+    
+    * {
+        color: #000 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+}

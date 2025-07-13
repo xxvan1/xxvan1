@@ -1,0 +1,524 @@
+/**
+ * Authentication Forms - Minimalist Design
+ * Clean, accessible form styling with validation states
+ * Mobile-first approach with touch-friendly interactions
+ */
+
+/* ============================================
+   FORM CONTAINER - STRUCTURE FOUNDATION
+   ============================================ */
+
+.auth-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.auth-form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.auth-form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   FORM LABELS - ACCESSIBILITY FIRST
+   ============================================ */
+
+.auth-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.auth-label.required::after {
+    content: " *";
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* ============================================
+   FORM INPUTS - TOUCH OPTIMIZED
+   ============================================ */
+
+.auth-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1.4;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    min-height: 44px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.auth-input::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+/* ============================================
+   INPUT VALIDATION STATES - FEEDBACK
+   ============================================ */
+
+.auth-input.valid {
+    border-color: #28a745;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%2328a745"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+    padding-right: 40px;
+}
+
+.auth-input.error {
+    border-color: #dc3545;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23dc3545"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+    padding-right: 40px;
+}
+
+.auth-input.error:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* ============================================
+   ERROR MESSAGES - VALIDATION FEEDBACK
+   ============================================ */
+
+.field-error {
+    display: none;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #dc3545;
+    line-height: 1.3;
+}
+
+.field-error.show {
+    display: block;
+}
+
+/* ============================================
+   FORM BUTTONS - ACTION CONTROLS
+   ============================================ */
+
+.auth-button {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-height: 44px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.auth-button.primary {
+    background: #007bff;
+    color: #fff;
+}
+
+.auth-button.primary:hover {
+    background: #0056b3;
+}
+
+.auth-button.primary:active {
+    transform: translateY(1px);
+}
+
+.auth-button.secondary {
+    background: #6c757d;
+    color: #fff;
+}
+
+.auth-button.secondary:hover {
+    background: #545b62;
+}
+
+.auth-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.auth-button:disabled:hover {
+    background: #007bff;
+}
+
+/* ============================================
+   BUTTON LOADING STATE - PROCESSING FEEDBACK
+   ============================================ */
+
+.auth-button.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.auth-button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   FORM LINKS - NAVIGATION ELEMENTS
+   ============================================ */
+
+.auth-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+    display: inline-block;
+    padding: 5px;
+    margin: -5px;
+    min-height: 44px;
+    line-height: 34px;
+}
+
+.auth-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.auth-link:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   FORM DIVIDERS - VISUAL SEPARATION
+   ============================================ */
+
+.auth-divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e1e5e9;
+}
+
+.auth-divider span {
+    background: #fff;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   FORM MESSAGES - SUCCESS/ERROR FEEDBACK
+   ============================================ */
+
+.auth-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.auth-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.auth-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.auth-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* ============================================
+   TOUCH INTERACTIONS - MOBILE OPTIMIZED
+   ============================================ */
+
+.touch-device .auth-button {
+    min-height: 48px;
+    font-size: 18px;
+}
+
+.touch-device .auth-input {
+    min-height: 48px;
+    font-size: 16px;
+}
+
+.touch-device .auth-button.touched {
+    background: #0056b3;
+    transform: scale(0.98);
+}
+
+/* ============================================
+   FORM ANIMATIONS - SMOOTH TRANSITIONS
+   ============================================ */
+
+.auth-form-group {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS - MOBILE FIRST
+   ============================================ */
+
+/* Mobile - 320px+ */
+@media (min-width: 320px) {
+    .auth-form {
+        padding: 0 15px;
+    }
+    
+    .auth-input {
+        font-size: 16px;
+    }
+    
+    .auth-button {
+        font-size: 16px;
+    }
+}
+
+/* Tablet - 768px+ */
+@media (min-width: 768px) {
+    .auth-form {
+        padding: 0 20px;
+    }
+    
+    .auth-input {
+        font-size: 15px;
+    }
+    
+    .auth-button {
+        font-size: 15px;
+    }
+}
+
+/* Desktop - 1024px+ */
+@media (min-width: 1024px) {
+    .auth-form {
+        padding: 0 25px;
+    }
+    
+    .auth-input {
+        font-size: 14px;
+    }
+    
+    .auth-button {
+        font-size: 14px;
+    }
+    
+    .auth-button:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* Large Desktop - 1440px+ */
+@media (min-width: 1440px) {
+    .auth-form {
+        padding: 0 30px;
+    }
+}
+
+/* ============================================
+   PASSWORD FIELD - SPECIAL STYLING
+   ============================================ */
+
+.auth-password-field {
+    position: relative;
+}
+
+.auth-password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    padding: 5px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-password-toggle:hover {
+    color: #333;
+}
+
+.auth-password-toggle:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   DARK MODE SUPPORT - PREFERS COLOR SCHEME
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    .auth-label {
+        color: #e2e8f0;
+    }
+    
+    .auth-input {
+        background: #2d3748;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+    
+    .auth-input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+    
+    .auth-input::placeholder {
+        color: #a0aec0;
+    }
+    
+    .auth-divider {
+        color: #a0aec0;
+    }
+    
+    .auth-divider::before {
+        background: #4a5568;
+    }
+    
+    .auth-divider span {
+        background: #2d3748;
+    }
+    
+    .auth-error {
+        background: #2d1b1b;
+        color: #fbb6ce;
+        border-color: #4a1c1c;
+    }
+    
+    .auth-success {
+        background: #1a2e1a;
+        color: #9ae6b4;
+        border-color: #2d5a2d;
+    }
+    
+    .auth-info {
+        background: #1a2832;
+        color: #90cdf4;
+        border-color: #2d4a5a;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION - ACCESSIBILITY PREFERENCE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-input,
+    .auth-button,
+    .auth-link {
+        transition: none;
+    }
+    
+    .auth-form-group {
+        animation: none;
+    }
+    
+    .auth-button.loading::after {
+        animation: none;
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE - ACCESSIBILITY SUPPORT
+   ============================================ */
+
+@media (prefers-contrast: high) {
+    .auth-input {
+        border-width: 3px;
+    }
+    
+    .auth-input:focus {
+        border-color: #000;
+        box-shadow: 0 0 0 3px #000;
+    }
+    
+    .auth-button {
+        border: 2px solid #000;
+    }
+    
+    .auth-button.primary {
+        background: #000;
+        color: #fff;
+    }
+    
+    .auth-button.primary:hover {
+        background: #333;
+    }
+}

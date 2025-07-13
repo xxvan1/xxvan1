@@ -1,0 +1,402 @@
+/**
+ * Modal Styles - Mobile-First Design
+ * Responsive modal system with touch-friendly interactions
+ * Optimized for HTML compression and performance
+ */
+
+/* ============================================
+   MODAL OVERLAY - BACKDROP FOUNDATION
+   ============================================ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   MODAL CONTAINER - CORE STRUCTURE
+   ============================================ */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   MODAL CONTENT - RESPONSIVE WRAPPER
+   ============================================ */
+
+.modal-content {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin: 10px;
+    max-height: 95vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    width: calc(100% - 20px);
+    max-width: 95%;
+}
+
+/* ============================================
+   MODAL HEADER - TITLE SECTION
+   ============================================ */
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.2;
+}
+
+/* ============================================
+   MODAL BODY - CONTENT AREA
+   ============================================ */
+
+.modal-body {
+    padding: 20px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ============================================
+   MODAL FOOTER - ACTION BUTTONS
+   ============================================ */
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ============================================
+   CLOSE BUTTON - DISMISSAL CONTROL
+   ============================================ */
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.modal-close:hover {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.modal-close:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   MODAL ANIMATIONS - SMOOTH TRANSITIONS
+   ============================================ */
+
+.modal-enter {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+}
+
+.modal-enter-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-exit {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.modal-exit-active {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ============================================
+   TOUCH INTERACTIONS - MOBILE OPTIMIZED
+   ============================================ */
+
+.touch-device .modal-content {
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.touch-device .modal-close {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 20px;
+}
+
+/* ============================================
+   BODY SCROLL PREVENTION - MODAL OPEN STATE
+   ============================================ */
+
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* ============================================
+   ACCESSIBILITY - FOCUS MANAGEMENT
+   ============================================ */
+
+.modal:focus {
+    outline: none;
+}
+
+.modal-content:focus {
+    outline: 2px solid #007bff;
+    outline-offset: -2px;
+}
+
+/* Focus trap for modal */
+.modal-content [tabindex="-1"]:focus {
+    outline: none;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS - HARDWARE ACCELERATION
+   ============================================ */
+
+.modal,
+.modal-overlay {
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.modal-content {
+    transform: translateZ(0);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS - MOBILE FIRST
+   ============================================ */
+
+/* Mobile - 320px+ */
+@media (min-width: 320px) {
+    .modal-content {
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 15px;
+    }
+    
+    .modal-title {
+        font-size: 16px;
+    }
+}
+
+/* Tablet - 768px+ */
+@media (min-width: 768px) {
+    .modal-content {
+        margin: 20px auto;
+        width: 80%;
+        max-width: 600px;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 20px;
+    }
+    
+    .modal-title {
+        font-size: 18px;
+    }
+    
+    .modal-close:hover {
+        background-color: #e9ecef;
+    }
+}
+
+/* Desktop - 1024px+ */
+@media (min-width: 1024px) {
+    .modal-content {
+        margin: 40px auto;
+        width: 60%;
+        max-width: 800px;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 25px;
+    }
+    
+    .modal-title {
+        font-size: 20px;
+    }
+}
+
+/* Large Desktop - 1440px+ */
+@media (min-width: 1440px) {
+    .modal-content {
+        margin: 60px auto;
+        width: 50%;
+        max-width: 900px;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 30px;
+    }
+    
+    .modal-title {
+        font-size: 22px;
+    }
+}
+
+/* ============================================
+   ORIENTATION SPECIFIC - LANDSCAPE MOBILE
+   ============================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .modal-content {
+        margin: 5px;
+        max-height: 90vh;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 10px 15px;
+    }
+    
+    .modal-title {
+        font-size: 14px;
+    }
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS - RETINA OPTIMIZATION
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    .modal-content {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT - PREFERS COLOR SCHEME
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    .modal-content {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .modal-header,
+    .modal-footer {
+        background: #1a202c;
+        border-color: #4a5568;
+    }
+    
+    .modal-title {
+        color: #e2e8f0;
+    }
+    
+    .modal-close {
+        color: #a0aec0;
+    }
+    
+    .modal-close:hover {
+        background-color: #4a5568;
+        color: #e2e8f0;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION - ACCESSIBILITY PREFERENCE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .modal,
+    .modal-overlay,
+    .modal-close {
+        transition: none;
+    }
+    
+    .modal-enter-active,
+    .modal-exit-active {
+        transition: none;
+    }
+}
+
+/* ============================================
+   PRINT STYLES - HIDDEN IN PRINT
+   ============================================ */
+
+@media print {
+    .modal,
+    .modal-overlay {
+        display: none !important;
+    }
+}
