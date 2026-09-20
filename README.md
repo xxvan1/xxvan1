@@ -1,7 +1,7 @@
 ## Hi there, I'm Mark Ivan but you may call me as Van.
 IT Student | Designer | Dev in Progress
 Tools: Figma | Photoshop | Illustrator | Antigravity IDE
-I’m currently learning development automation
+I’m currently learning AI development automation
 
 <!--
 **xxvan1/xxvan1** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
